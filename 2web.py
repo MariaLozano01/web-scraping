@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 
 #Get first page
-page = requests.get('https://www.youtube.com')
+page = requests.get('https://www.stonybrook.edu/commcms/studentaffairs/res/housing/undergraduate_housing/chavez_tubman_nobel')
 page
 page.text
 
@@ -14,11 +14,37 @@ soup
 
 print(soup.prettify())
 
-web2 = soup.find_all('div',class_="style-scope ytd-two-column-browse-results-renderer")
-output_web2 = []
-for i in web2:
+web3 = soup.find_all('h3')
+web3s = []
+for i in web3:
     print(i.text)
     data = i.text
-    output_web2.append(data)
+    web3s.append(data)
 
-df = pd.DataFrame({'names':repo_names,'descriptions':repo_descs})
+web4 = soup.find_all('ul', class_="accordion-controls drop-accordion drop-accordion-1 clearfix")
+web4s = []
+for i in web4:
+    print(i.text)
+    data = i.text 
+    web4s.append(data)
+len(web4s)
+for data in  web4s:
+    print(data)
+
+
+web4s.append('Dorm')
+web4s.append('West Campus')
+web4s.append('Undergraduate Dorms')
+web4s.append('More Questions?')
+web4s.append('Via Phone')
+
+list1 = web3s
+list2 = web4s
+
+len(web3s)
+len(web4s)
+
+
+dictionary = {'title': list1, 'dorms': list2}
+df = pd.DataFrame({'title': web3s,'dorms': web4s})
+df.to_csv('/Users/marialozano/Documents/GitHub/web-scraping/data/Dorms_info.csv')

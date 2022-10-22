@@ -35,9 +35,19 @@ len(web2s)
 for data1 in  web2s:
     print(data1)
 
+
+web1s.append('Intermediate Advanced')
+web1s
+web1s.append('Advanced')
+len(web1s)
+
 list1 = web1s
 list2 = web2s
 
+len(web1s)
+len(web2s)
+
 dictionary = {'program': list1, 'courses': list2}
-df = pd.DataFrame({'program':web1s ,'courses':web2s})
+df = pd.DataFrame({'program': web1s,'courses': web2s})
 df.to_csv('/Users/marialozano/Documents/GitHub/web-scraping/data/Korean_info.csv')
+
